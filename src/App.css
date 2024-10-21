@@ -1,12 +1,11 @@
 
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
 
 
-.App-header {
+.page-container {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -15,6 +14,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  padding: 0 20px 0 20px;
 }
 
 .App-link {
@@ -34,6 +34,7 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  text-align: center;
 }
 
 .btn-parent {
