@@ -1,7 +1,6 @@
 import logo from "./logo.svg";
 import shoppingPic from "./img/shopping.png";
 import "./App.css";
-
 import { useState } from "react";
 
 function App() {
@@ -22,7 +21,7 @@ function App() {
       setData(json);
     } catch (error) {
       console.error(error.message);
-      console.log('Sentry Frontend Error!');
+      console.log("Sentry Frontend Error!");
       throw error;
     }
     modalOpen === false && toggleModal();
@@ -41,10 +40,11 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
+      <header className="App-header"></header>
+      <div className="page-container">
         <h1>This is your one-stop shop!</h1>
         <img src={shoppingPic} className="App-logo" alt="logo" />
-        <p>Click on an item to learn more</p>
+        <p>Click on an item to learn more about our products</p>
         <div className="btn-container">
           <div className="btn-parent">
             <button
@@ -90,7 +90,7 @@ function App() {
             <p>Something went wrong.</p>
           )}
         </div>
-      </header>
+      </div>
     </div>
   );
 }
