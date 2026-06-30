@@ -1,7 +1,6 @@
-import logo from "./logo.svg";
+import { useState } from "react";
 import shoppingPic from "./img/shopping.png";
 import "./App.css";
-import { useState } from "react";
 
 function App() {
   const [data, setData] = useState(null);
@@ -17,14 +16,12 @@ function App() {
       }
 
       const json = await response.json();
-      console.log("json", json);
       setData(json);
     } catch (error) {
       console.error(error.message);
-      console.log("Sentry Frontend Error!");
       throw error;
     }
-    modalOpen === false && toggleModal();
+    if (!modalOpen) toggleModal();
   }
 
   function toggleModal() {
