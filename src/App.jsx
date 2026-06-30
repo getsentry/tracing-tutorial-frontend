@@ -2,13 +2,18 @@ import { useState } from "react";
 import shoppingPic from "./img/shopping.png";
 import "./App.css";
 
+// URL of the companion Express backend. Override with VITE_BACKEND_URL in a
+// .env file; defaults to the local backend from the tutorial.
+const BACKEND_URL =
+  import.meta.env.VITE_BACKEND_URL ?? "http://localhost:3001";
+
 function App() {
   const [data, setData] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
 
   async function getProduct(slug) {
     setData(null);
-    const url = `http://localhost:3001/products/${slug}/`;
+    const url = `${BACKEND_URL}/products/${slug}/`;
     try {
       const response = await fetch(url);
       if (!response.ok) {
@@ -78,7 +83,7 @@ function App() {
             <>
               <h2>{data.title}</h2>
               <img
-                src={`http://localhost:3001/${data.imgPath}`}
+                src={`${BACKEND_URL}/${data.imgPath}`}
                 alt="item-image"
               />
               <p className="modal-description">{data.description}</p>

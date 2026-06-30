@@ -15,7 +15,15 @@ npm run dev
 
 The app runs at [http://localhost:3000](http://localhost:3000).
 
-You'll also need the [backend](https://github.com/getsentry/tracing-tutorial-backend) running on `http://localhost:3001` for the product fetches to succeed.
+You'll also need the [backend](https://github.com/getsentry/tracing-tutorial-backend) running on `http://localhost:3001` for the product fetches to succeed. Start the backend **first** — if it isn't running, the product buttons fail with a `Failed to fetch` error.
+
+## Configuration
+
+The backend URL defaults to `http://localhost:3001`. To point at a different backend, copy `.env.example` to `.env` and set `VITE_BACKEND_URL`:
+
+```bash
+cp .env.example .env
+```
 
 ## Scripts
 
