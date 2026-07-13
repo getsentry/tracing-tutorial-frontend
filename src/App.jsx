@@ -1,7 +1,11 @@
-import logo from "./logo.svg";
+import { useState } from "react";
 import shoppingPic from "./img/shopping.png";
 import "./App.css";
-import { useState } from "react";
+
+// URL of the companion Express backend. Override with VITE_BACKEND_URL in a
+// .env file; defaults to the local backend from the tutorial.
+const BACKEND_URL =
+  import.meta.env.VITE_BACKEND_URL ?? "http://localhost:3001";
 
 function App() {
   const [data, setData] = useState(null);
@@ -9,7 +13,7 @@ function App() {
 
   async function getProduct(slug) {
     setData(null);
-    const url = `http://localhost:3001/products/${slug}/`;
+    const url = `${BACKEND_URL}/products/${slug}/`;
     try {
       const response = await fetch(url);
       if (!response.ok) {
@@ -17,14 +21,12 @@ function App() {
       }
 
       const json = await response.json();
-      console.log("json", json);
       setData(json);
     } catch (error) {
       console.error(error.message);
-      console.log("Sentry Frontend Error!");
       throw error;
     }
-    modalOpen === false && toggleModal();
+    if (!modalOpen) toggleModal();
   }
 
   function toggleModal() {
@@ -81,7 +83,7 @@ function App() {
             <>
               <h2>{data.title}</h2>
               <img
-                src={`http://localhost:3001/${data.imgPath}`}
+                src={`${BACKEND_URL}/${data.imgPath}`}
                 alt="item-image"
               />
               <p className="modal-description">{data.description}</p>

@@ -1,42 +1,20 @@
 {
-  "name": "tracing-demo",
-  "version": "0.1.0",
+  "name": "tracing-tutorial-frontend",
   "private": true,
-  "dependencies": {
-    "@sentry/browser": "^8.34.0",
-    "@sentry/cli": "^2.36.3",
-    "@sentry/react": "^8.32.0",
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
-  },
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Sample React frontend for the Sentry getting-started tutorial.",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build && npm run sentry:sourcemaps && npm run sentry:sourcemaps",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "sentry:sourcemaps": "sentry-cli sourcemaps inject --org krawiec --project tracing-demo ./build && sentry-cli --url https://sentry.io/ sourcemaps upload --org krawiec --project tracing-demo ./build"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.0.3",
+    "vite": "^8.1.2"
   }
 }

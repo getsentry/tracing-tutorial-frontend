@@ -1,5 +1,38 @@
-# Sample Frontend Repo for Sentry Tracing Tutorial
+# Sentry Getting-Started Tutorial — Frontend Sample
 
-quickstart: `npm install && npm start`
+A small React + Vite app used by the [Sentry getting-started tutorial](https://docs.sentry.io/product/sentry-basics/getting-started-tutorial/). It's a fake e-commerce site with four product buttons that fetch from a companion [Express backend](https://github.com/getsentry/tracing-tutorial-backend).
 
-Refer to URL_HERE for more info.
+You'll add the Sentry SDK to this app during the tutorial and use it to trigger a cross-project distributed trace.
+
+## Run it
+
+Requires **Node 18+**.
+
+```bash
+npm install
+npm run dev
+```
+
+The app runs at [http://localhost:3000](http://localhost:3000).
+
+You'll also need the [backend](https://github.com/getsentry/tracing-tutorial-backend) running on `http://localhost:3001` for the product fetches to succeed. Start the backend **first** — if it isn't running, the product buttons fail with a `Failed to fetch` error.
+
+## Configuration
+
+The backend URL defaults to `http://localhost:3001`. To point at a different backend, copy `.env.example` to `.env` and set `VITE_BACKEND_URL`:
+
+```bash
+cp .env.example .env
+```
+
+## Scripts
+
+| Command | What it does |
+|---|---|
+| `npm run dev` | Start the Vite dev server on port 3000 |
+| `npm run build` | Produce a production build in `dist/` |
+| `npm run preview` | Serve the production build locally |
+
+## Tutorial steps
+
+Follow the [tutorial](https://docs.sentry.io/product/sentry-basics/getting-started-tutorial/) for the full flow.
