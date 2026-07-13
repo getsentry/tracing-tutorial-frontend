@@ -1,5 +1,4 @@
 import { useState } from "react";
-import shoppingPic from "./img/shopping.png";
 import "./App.css";
 
 // URL of the companion Express backend. Override with VITE_BACKEND_URL in a
@@ -41,51 +40,80 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <header className="App-header"></header>
-      <div className="page-container">
-        <h1>This is your one-stop shop!</h1>
-        <img src={shoppingPic} className="App-logo" alt="logo" />
-        <p>Click on an item to learn more about our products</p>
-        <div className="btn-container">
-          <div className="btn-parent">
-            <button
-              className="btn"
-              onClick={() => getProduct("kitten-mittens")}
-            >
-              Kitten Mittens
-            </button>
-          </div>
-          <div className="btn-parent">
-            <button className="btn" onClick={() => getProduct("doggles")}>
-              Doggles
-            </button>
-          </div>
-          <div className="btn-parent">
-            <button className="btn" onClick={() => getProduct("clown-shoes")}>
-              Clown Shoes
-            </button>
-          </div>
-          <div className="btn-parent">
-            <button className="btn" onClick={() => getProduct("nonfat-water")}>
-              Nonfat Water
-            </button>
-          </div>
+    <div className="app">
+      <header className="navbar">
+        <div className="navbar-inner">
+          <span className="brand">🛍️ One-Stop Shop</span>
+          <nav className="nav-links">
+            <a href="#products">Products</a>
+            <a href="#about">About</a>
+          </nav>
         </div>
+      </header>
 
-        <p>"If we don't have it, you don't need it."</p>
-
-        <div className="modal hidden">
-          <p className={"modal-exit"} onClick={toggleModal}>
-            X
+      <main>
+        <section className="hero">
+          <h1>Everything you need. Nothing you don't.</h1>
+          <p className="hero-tagline">
+            "If we don't have it, you don't need it."
           </p>
+        </section>
+
+        <section id="products" className="products">
+          <h2 className="section-title">Featured Products</h2>
+          <div className="product-grid">
+            <article className="product-card">
+              <div className="product-thumb">🧤</div>
+              <h3 className="product-name">Kitten Mittens</h3>
+              <button
+                className="btn"
+                onClick={() => getProduct("kitten-mittens")}
+              >
+                View details
+              </button>
+            </article>
+            <article className="product-card">
+              <div className="product-thumb">🕶️</div>
+              <h3 className="product-name">Doggles</h3>
+              <button className="btn" onClick={() => getProduct("doggles")}>
+                View details
+              </button>
+            </article>
+            <article className="product-card">
+              <div className="product-thumb">🤡</div>
+              <h3 className="product-name">Clown Shoes</h3>
+              <button className="btn" onClick={() => getProduct("clown-shoes")}>
+                View details
+              </button>
+            </article>
+            <article className="product-card">
+              <div className="product-thumb">💧</div>
+              <h3 className="product-name">Nonfat Water</h3>
+              <button className="btn" onClick={() => getProduct("nonfat-water")}>
+                View details
+              </button>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <div className="modal hidden">
+        <div className="modal-content">
+          <button
+            className="modal-exit"
+            onClick={toggleModal}
+            aria-label="Close"
+          >
+            ×
+          </button>
           {data ? (
             <>
-              <h2>{data.title}</h2>
               <img
+                className="modal-img"
                 src={`${BACKEND_URL}/${data.imgPath}`}
-                alt="item-image"
+                alt={data.title}
               />
+              <h2>{data.title}</h2>
               <p className="modal-description">{data.description}</p>
             </>
           ) : (
