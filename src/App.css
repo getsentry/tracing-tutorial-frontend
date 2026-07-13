@@ -1,91 +1,200 @@
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+:root {
+  --bg: #f6f7fb;
+  --surface: #ffffff;
+  --text: #1c1830;
+  --muted: #6b6786;
+  --accent: #6c5fc7;
+  --accent-dark: #584bb3;
+  --border: #e7e7f0;
+  --shadow: 0 4px 20px rgba(28, 24, 48, 0.08);
 }
 
+* {
+  box-sizing: border-box;
+}
 
-.page-container {
-  background-color: #282c34;
+.app {
   min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Navbar */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+
+.navbar-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 16px 24px;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.nav-links a {
+  margin-left: 24px;
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  color: var(--text);
+}
+
+/* Hero */
+.hero {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 72px 24px 48px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: clamp(32px, 5vw, 52px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 16px;
+}
+
+.hero-tagline {
+  font-size: 18px;
+  font-style: italic;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* Products */
+.products {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 24px 24px 96px;
+}
+
+.section-title {
+  font-size: 24px;
+  margin: 0 0 24px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+.product-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px 24px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(28, 24, 48, 0.12);
+}
+
+.product-thumb {
+  font-size: 56px;
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.product-name {
+  font-size: 18px;
+  margin: 0 0 20px;
+}
+
+/* Button */
+.btn {
+  border: none;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.btn:hover {
+  background: var(--accent-dark);
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-  padding: 0 20px 0 20px;
+  padding: 24px;
+  background: rgba(20, 16, 40, 0.55);
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.btn-container {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  text-align: center;
-}
-
-.btn-parent {
-  flex: 1 1 160px;
-}
-
-.btn {
-  
-  margin: 20px;
-  height: 45px;
-  width: 167px !important;
-  font-size: 20px;
-  font-weight: bold;
-  text-align: center;
-  border-radius: 10px;
-  background-color: darkslateblue;
-  color: white;
-  cursor: pointer;
-}
-
-.modal {
-  height: 500px;
-  width: 70%;
-  background-color: grey;
-  border-radius: 30px;
-  position: fixed;
-  top: 20%;
-  text-align: center;
-}
-
-.hidden {
+.modal.hidden {
   display: none;
+}
+
+.modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  padding: 32px;
+  text-align: center;
+  background: var(--surface);
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
 }
 
 .modal-exit {
   position: absolute;
-  top: 0%;
-  left: 96%;
-  font-weight: bolder;
-  margin-top: 10px;
-  color: white;
-  font-size: 24px;
+  top: 12px;
+  right: 16px;
+  border: none;
+  background: transparent;
+  font-size: 28px;
+  line-height: 1;
+  color: var(--muted);
   cursor: pointer;
 }
 
-.modal img {
-  width: 260px;
-}
-.modal-description {
-font-size: 20px;
-padding-left: 80px;
-padding-right: 80px;
+.modal-exit:hover {
+  color: var(--text);
 }
 
+.modal-img {
+  width: 220px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.modal-content h2 {
+  margin: 0 0 12px;
+}
+
+.modal-description {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--muted);
+  margin: 0;
+}
